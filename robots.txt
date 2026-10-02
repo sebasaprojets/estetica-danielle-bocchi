@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://sebasaprojets.github.io/estetica-danielle-bocchi
+Sitemap: https://sebasaprojets.github.io/estetica-danielle-bocchi/sitemap.xml
