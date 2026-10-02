@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design system — Estética Danielle Bocchi
+   Quiet luxury · editorial · acolhedor
+   ------------------------------------------------------------------ */
+
+@theme {
+  /* Paleta da marca */
+  --color-ivory: #faf8f5;
+  --color-nude: #e9ddd2;
+  --color-sand: #d6c2b2;
+  --color-mocha: #806b5d;
+  --color-olive: #92917c;
+  --color-ink: #292724;
+
+  /* Tons de apoio (derivados, para contraste AA em textos) */
+  --color-cream: #f3ede6;
+  --color-mocha-deep: #6b5749;
+  --color-olive-deep: #5f5e4d;
+  --color-ink-soft: #57504a;
+  --color-line: #e2d6cb;
+
+  /* Tipografia */
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(2.9rem, 1.7rem + 4.6vw, 6.1rem);
+  --text-display--line-height: 0.95;
+  --text-title: clamp(2.4rem, 1.5rem + 3.6vw, 4.75rem);
+  --text-title--line-height: 1.02;
+
+  --tracking-label: 0.22em;
+
+  /* Movimento — curvas e durações consistentes */
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-soft: 0 1px 2px rgb(41 39 36 / 0.04), 0 12px 32px -12px rgb(41 39 36 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(41 39 36 / 0.05), 0 28px 60px -24px rgb(41 39 36 / 0.28);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-drift: drift 22s var(--ease-soft) infinite alternate;
+  --animate-scroll-line: scroll-line 2.4s var(--ease-luxe) infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(4%, -6%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes scroll-line {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mocha);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  button,
+  [role="button"],
+  a {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Rótulo editorial em caixa alta */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* Máscara em arco — assinatura visual da marca */
+  .arch {
+    border-radius: 999px 999px 0 0;
+  }
+
+  /* Textura sutil de papel (grain) */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .hairline {
+    background-image: linear-gradient(to right, transparent, var(--color-sand), transparent);
+    height: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes shine {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
