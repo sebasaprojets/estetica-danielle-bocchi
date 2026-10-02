@@ -7,6 +7,7 @@ import { clinic } from "@/data/clinic";
 import { images } from "@/data/images";
 import { siteConfig } from "@/data/site";
 import { whatsappUrl } from "@/lib/utils";
+import { useIntro } from "@/lib/intro";
 import { Button } from "@/components/ui/Button";
 import { SmartImage } from "@/components/ui/SmartImage";
 import { Sprig, WhatsAppIcon } from "@/components/ui/Icons";
@@ -20,6 +21,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const { done: introDone } = useIntro();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 110]);
   const imageScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1.06, 1.16]);
@@ -30,7 +32,7 @@ export function Hero() {
       ? {}
       : {
           initial: { opacity: 0, y: 18 },
-          animate: { opacity: 1, y: 0 },
+          animate: introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
           transition: { duration: 0.9, delay, ease },
         };
 
@@ -43,8 +45,8 @@ export function Hero() {
     >
       {/* Fundo animado discreto */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-40 -left-32 size-[38rem] rounded-full bg-nude/70 blur-3xl motion-safe:animate-drift" />
-        <div className="absolute top-1/3 -right-40 size-[30rem] rounded-full bg-sand/35 blur-3xl motion-safe:animate-drift [animation-delay:-8s]" />
+        <div className="glow-nude absolute -top-56 -left-48 size-[52rem] will-change-transform md:motion-safe:animate-drift" />
+        <div className="glow-sand absolute top-1/4 -right-56 size-[44rem] will-change-transform md:motion-safe:animate-drift md:[animation-delay:-8s]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ivory" />
       </div>
 
@@ -62,11 +64,12 @@ export function Hero() {
           <h1 id="hero-title" className="text-display mt-8 text-ink">
             <span className="sr-only">Realce sua beleza. Valorize sua essência.</span>
             <span aria-hidden="true" className="block">
-              <BlurText as="span" text="Realce sua beleza." startDelay={0.2} className="block lg:flex-nowrap" />
+              <BlurText as="span" text="Realce sua beleza." startDelay={0.2} play={introDone} className="block lg:flex-nowrap" />
               <BlurText
                 as="span"
                 text="Valorize sua essência."
                 startDelay={0.55}
+                play={introDone}
                 className="block text-mocha-deep italic"
               />
             </span>
@@ -120,7 +123,7 @@ export function Hero() {
         <div className="relative lg:col-span-5">
           <motion.div
             initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
-            animate={{ clipPath: "inset(0% 0 0 0)" }}
+            animate={{ clipPath: introDone ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
             transition={{ duration: 1.4, delay: 0.15, ease }}
             className="arch relative mx-auto aspect-[4/5] w-full max-w-[34rem] overflow-hidden shadow-lift lg:mr-0 lg:ml-auto lg:aspect-auto lg:h-[min(78svh,46rem)]"
           >
@@ -141,7 +144,7 @@ export function Hero() {
           {/* Selo circular */}
           <motion.div
             initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={introDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 1, delay: 1.1, ease }}
             className="absolute top-6 left-0 hidden size-32 items-center justify-center rounded-full bg-ivory/85 text-mocha-deep shadow-soft backdrop-blur-md sm:flex lg:top-16 lg:-left-16"
           >
@@ -153,7 +156,7 @@ export function Hero() {
           <motion.div
             style={{ y: detailY }}
             initial={reduce ? false : { opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 1.1, delay: 1.25, ease }}
             className="absolute -bottom-8 left-2 hidden w-44 overflow-hidden rounded-[1.25rem] border-[6px] border-ivory shadow-lift md:block lg:-left-10 lg:w-52"
           >

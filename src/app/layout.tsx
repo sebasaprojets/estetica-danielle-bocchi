@@ -7,6 +7,8 @@ import { localBusinessJsonLd, websiteJsonLd } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { IntroProvider, introBootScript } from "@/lib/intro";
+import { IntroOverlay } from "@/components/intro/IntroOverlay";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -66,8 +68,13 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${manrope.variable}`}>
+    <html lang="pt-BR" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="min-h-dvh overflow-x-clip">
+        <script dangerouslySetInnerHTML={{ __html: introBootScript }} />
+        <noscript>
+          <style>{"#intro{display:none!important}"}</style>
+        </noscript>
+        <IntroProvider>
         <a
           href="#conteudo"
           className="sr-only rounded-full bg-ink px-5 py-3 text-sm text-ivory focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]"
@@ -78,6 +85,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="conteudo">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <IntroOverlay />
+        </IntroProvider>
 
         <script
           type="application/ld+json"

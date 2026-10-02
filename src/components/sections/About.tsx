@@ -40,7 +40,7 @@ export function About() {
   const detailY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [60, -60]);
 
   return (
-    <section
+    <section data-defer
       id="sobre"
       ref={ref}
       aria-labelledby="about-title"

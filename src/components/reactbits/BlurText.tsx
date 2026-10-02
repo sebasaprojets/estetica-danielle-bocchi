@@ -22,6 +22,8 @@ type BlurTextProps = {
   stepDuration?: number;
   easing?: Easing;
   once?: boolean;
+  /** false = aguarda (ex.: até a abertura terminar) */
+  play?: boolean;
 };
 
 export default function BlurText({
@@ -34,6 +36,7 @@ export default function BlurText({
   stepDuration = 0.45,
   easing = [0.22, 1, 0.36, 1],
   once = true,
+  play = true,
 }: BlurTextProps) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once, amount: 0.3 });
@@ -64,7 +67,7 @@ export default function BlurText({
           aria-hidden="true"
           className="inline-block will-change-[transform,filter,opacity]"
           initial={from}
-          animate={inView ? to : from}
+          animate={inView && play ? to : from}
           transition={{
             duration: stepDuration * 2,
             times: [0, 0.5, 1],

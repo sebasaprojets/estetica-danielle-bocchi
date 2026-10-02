@@ -27,7 +27,7 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow,backdrop-filter,padding] duration-500 ease-(--ease-luxe)",
           scrolled
-            ? "bg-ivory/80 py-3 shadow-[0_1px_0_var(--color-line)] backdrop-blur-xl backdrop-saturate-150"
+            ? "bg-ivory/95 py-3 shadow-[0_1px_0_var(--color-line)] md:bg-ivory/80 md:backdrop-blur-lg"
             : "bg-transparent py-5 md:py-7",
         )}
       >

@@ -46,7 +46,7 @@ export function Testimonials() {
   };
 
   return (
-    <section id="depoimentos" aria-labelledby="testimonials-title" className="relative overflow-hidden bg-ink py-24 text-ivory md:py-36">
+    <section data-defer id="depoimentos" aria-labelledby="testimonials-title" className="relative overflow-hidden bg-ink py-24 text-ivory md:py-36">
       <div aria-hidden="true" className="pointer-events-none absolute top-10 right-[-4rem] font-serif text-[22rem] leading-none text-ivory/[0.04] select-none md:text-[34rem]">
         “
       </div>
@@ -141,9 +141,9 @@ export function Testimonials() {
                         {i === index && (
                           <motion.span
                             key={`${index}-${autoplay}`}
-                            className="absolute inset-y-0 left-0 bg-sand"
-                            initial={{ width: autoplay ? "0%" : "100%" }}
-                            animate={{ width: "100%" }}
+                            className="absolute inset-0 origin-left bg-sand"
+                            initial={{ scaleX: autoplay ? 0 : 1 }}
+                            animate={{ scaleX: 1 }}
                             transition={{ duration: autoplay ? AUTOPLAY_MS / 1000 : 0, ease: "linear" }}
                           />
                         )}

@@ -11,7 +11,7 @@ export function Contact() {
   const hasUnconfirmedHours = clinic.openingHours.some((h) => !h.confirmed);
 
   return (
-    <section id="contato" aria-labelledby="contact-title" className="relative bg-ivory py-24 md:py-36">
+    <section data-defer id="contato" aria-labelledby="contact-title" className="relative bg-ivory py-24 md:py-36">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
