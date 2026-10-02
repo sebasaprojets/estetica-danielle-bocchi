@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 import { ImageResponse } from "next/og";
 
-export const alt = "Estética Danielle Bocchi — Estética & Bem-estar em Curitiba";
+export const alt = "Estética Danielle Bocchi — Estética e Saúde em Curitiba";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", fontSize: 22, letterSpacing: 8, color: "#6b5749" }}>
-          ESTÉTICA &amp; BEM-ESTAR · CURITIBA
+          ESTÉTICA E SAÚDE · CURITIBA
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 112, lineHeight: 1, letterSpacing: -2 }}>Danielle Bocchi</div>

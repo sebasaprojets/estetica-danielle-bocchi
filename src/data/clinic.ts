@@ -19,7 +19,7 @@ export type OpeningHour = {
 export const clinic = {
   name: "Estética Danielle Bocchi",
   shortName: "Danielle Bocchi",
-  tagline: "Estética & Bem-estar",
+  tagline: "Estética e Saúde",
   city: "Curitiba",
   category: "Centro de saúde e beleza",
   description:

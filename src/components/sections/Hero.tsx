@@ -148,7 +148,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 1.1, ease }}
             className="absolute top-6 left-0 hidden size-32 items-center justify-center rounded-full bg-ivory/85 text-mocha-deep shadow-soft backdrop-blur-md sm:flex lg:top-16 lg:-left-16"
           >
-            <CircularText text="AGENDE SUA AVALIAÇÃO · ESTÉTICA & BEM-ESTAR · " className="absolute inset-1.5" />
+            <CircularText text="AGENDE SUA AVALIAÇÃO · ESTÉTICA E SAÚDE · " className="absolute inset-1.5" />
             <Sprig className="size-9 text-mocha" />
           </motion.div>
 
