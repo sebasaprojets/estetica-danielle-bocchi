@@ -1,7 +1,7 @@
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { clinic } from "@/data/clinic";
 import { navigation } from "@/data/navigation";
-import { telUrl, whatsappUrl } from "@/lib/utils";
+import { telUrl, whatsappUrl, withBase } from "@/lib/utils";
 import { InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { Logo } from "./Logo";
 
@@ -109,7 +109,7 @@ export function Footer() {
             © {year} {clinic.name}. Todos os direitos reservados.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <a href="/politica-de-privacidade" className="inline-flex min-h-10 items-center transition-colors hover:text-ivory">
+            <a href={withBase("/politica-de-privacidade")} className="inline-flex min-h-10 items-center transition-colors hover:text-ivory">
               Política de privacidade
             </a>
             <span>Curitiba – PR</span>

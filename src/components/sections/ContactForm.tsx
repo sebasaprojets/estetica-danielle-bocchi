@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { publishedTreatments } from "@/data/treatments";
-import { cn, whatsappUrl } from "@/lib/utils";
+import { cn, whatsappUrl, withBase } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/Icons";
 
@@ -279,7 +279,7 @@ export function ContactForm() {
                   />
                   <span>
                     Concordo em ser contatada(o) pela clínica pelo WhatsApp, conforme a{" "}
-                    <a href="/politica-de-privacidade" className="underline underline-offset-4 hover:text-ink">
+                    <a href={withBase("/politica-de-privacidade")} className="underline underline-offset-4 hover:text-ink">
                       Política de privacidade
                     </a>
                     . *

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { withBase } from "@/lib/utils";
 
 export default function NotFound() {
   return (
@@ -8,7 +9,7 @@ export default function NotFound() {
         Página não <span className="italic">encontrada.</span>
       </h1>
       <p className="mt-6 max-w-md text-ink-soft">O conteúdo que você procura pode ter sido movido ou não existe mais.</p>
-      <Button href="/" className="mt-10">
+      <Button href={withBase("/")} className="mt-10">
         Voltar ao início
       </Button>
     </section>

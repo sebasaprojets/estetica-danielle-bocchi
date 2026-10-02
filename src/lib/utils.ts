@@ -25,6 +25,16 @@ export function telUrl(phone: string = clinic.phone.e164) {
   return `tel:${phone}`;
 }
 
+/**
+ * Prefixo de caminho quando o site é publicado em subpasta (ex.: GitHub Pages).
+ * Use em links internos feitos com <a> comum (o next/link já aplica sozinho).
+ */
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export function withBase(path: string) {
+  return `${basePath}${path}`;
+}
+
 /** URL absoluta do site (configure NEXT_PUBLIC_SITE_URL em produção). */
 export function getSiteUrl() {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
